@@ -2,18 +2,21 @@ use entrypoint::Application;
 
 // Application struct
 pub struct App {
-    pub name: String,
-    pub version: String,
+    pub name: &'static str,
+    pub version: &'static str,
 }
 
-impl Application for App {}
+impl Application for App {
+    fn name(&self) -> &'static str { self.name }
+    fn version(&self) -> &'static str { self.version }
+}
 
 /// main creates and runs an Io application
 fn main() {
     // define and run the application
     App {
-        name: "Io74XX".to_string(),
-        version: "0.0.1".to_string(),
+        name: "Io74XX",
+        version: "0.0.1",
     }.run();
 }
 
